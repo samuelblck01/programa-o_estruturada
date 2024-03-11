@@ -1,153 +1,176 @@
 /*
-  Aviso: se você executar, acidentalmente, um loop infinito, faça o seguinte:
-  
-  - Feche o navegador;
-  - Desconecte o servidor;
-  - Modifique o seu código para que o looping infinito não aconteça;
-  - E só então, levante o servidor novamente.
+  01 - Suba o seu servidor local e:
+
+  - Armazene em uma constante "my3FavoriteTVShows" suas 3 séries favoritas;
+  - Se você não assiste séries, armazene seus 3 filmes favoritos;
+  - Armazene em uma constante "sentence" a frase abaixo, modificando "SÉRIE_01,  
+    SÉRIE_02 e SÉRIE_03" para as suas séries favoritas;
+  - O "e" antes do nome da última série deve ser mantido;
+  - Forme essa frase sem digitar o nome das séries (claro) e sem utilizar  
+    a notação "array[index]";
+  - Exiba a frase no console.
+
+  "Minhas 3 séries favoritas são: SÉRIE_01, SÉRIE_02 e SÉRIE_03."
 */
-
-/*
-  01
-
-  - Utilizando um while loop, exiba no console todos os números entre 0 e 5,  
-    inclusive esses dois.
-  - O resultado deve ser:
-    0
-    1
-    2
-    3
-    4
-    5
-*/
-
-let num = 0;
-while (num <= 5) {
-    console.log(num);
-    num++;
-}
+const my3FavoriteTVShows = ["Vikings", "Breaking Bad", "the walking dead"];
+const sentence = `Minhas três séries favoritas são ${my3FavoriteTVShows[0]}, ${my3FavoriteTVShows[1]} e ${my3FavoriteTVShows[2]}.`;
+//console.log(sentence);
 
 
 /*
-  02 - Comente a declaração da let e o loop acima e:
+  02 - Comente o console.log() acima e:
 
-  - Utilizando um for loop, faça o mesmo que foi pedido no exercício 01.
+  - Exiba no console um boolean indicando se o array de séries que você criou  
+    possui 3 itens.
 */
-for (let num = 0; num <= 5; num++) {
-    console.log(num);
-}
+
+
+
+const bool = my3FavoriteTVShows.length === 3;
+
+//console.log(bool);
+
+
+/*
+  03 - Comente o console.log() acima e:
+
+  - Após a constante abaixo, armazene em uma constante "isRandomTVShowIncluded"  
+    um boolean que indica se a série que a "randomTVShow" armazena é uma das  
+    suas 3 séries favoritas;
+  - Utilize o método adequado para fazer essa verificação;
+  - Exiba no console o boolean que a "isRandomTVShowIncluded" recebeu.
+*/
+
+const isRandomTVShowIncluded = "lost";
+//console.log(`A serie ${isRandomTVShowIncluded}, esta present no array? 
+//${my3FavoriteTVShows.incluides(isRandomTVShowIncluded)}`)
+
+
+//console.log(isRandomTVShowIncluded);
+
+
+
 
 
 
 /*
-  03 - Comente o loop acima e:
+  04 - Comente o console.log() acima e:
 
-  - Escreva um loop (for ou while) que exiba a frase abaixo no console;
-  - Substitua o "X" pela informação correta;
-  - "X" deve começar em 1 na 1ª exibição da frase e em 10 na última;
-  - Exiba a frase 10x no console.
+  - Armazene a frase abaixo em uma constante "typeSentence", substituindo  
+    "TIPO_DE_DADO" pela informação correta;
+  - Utilize o operador adequado para gerar essa informação;
+  - Exiba a "typeSentence" no console.
 
-  "Esta é a Xª vez que esta frase é exibida no console."
+  "O tipo de dado que a const "isRandomTVShowIncluded" armazena é: TIPO_DE_DADO."
 */
+ isRandomTVShowIncluded == true; 
+ const typeSentence = `O tipo de dado que a const "isRandomTVShowIncluded" armazena é: ${typeof isRandomTVShowIncluded}.`;
 
-//for (let x = 1; x <= 10; x++) {
-    console.log(`Esta é a ${x}ª vez que esta frase é exibida no console.`);
-//}
+//console.log(typeSentence);
+
 
 
 /*
-  04 - Comente o loop acima e:
+  05 - Comente o console.log() acima e:
 
-  - Abaixo da constante "cities", declare uma let "upperCaseCities" e atribua à  
-    ela um array vazio;
-  - Adicione no array que a "upperCaseCities" armazena as cidades do array  
-    cities com todas as letras maiúsculas, utilizando o for loop.
-  - Para ver se deu certo, exiba o upperCaseCities no console.
+  - Exiba a frase abaixo no console, substituindo "NÚMERO_DE_CARACTERES" por 39  
+    e "BOOLEAN" pela informação correta (true ou false);
+  - Converta explicitamente este boolean em uma string ao inserí-lo na frase;
+  - A 1ª letra do boolean deve ser maiúscula;
+  - Dica: se você perceber que está repetindo o mesmo número na string, cogite  
+    armazenar este número em uma constante e usá-la na frase.
+
+  "A string que a "typeSentence" armazena tem mais de NÚMERO_DE_CARACTERES  
+  caracteres? BOOLEAN."
 */
+const NUMERO_DE_CARACTERES = 39;
+const BOOLEAN = true;
 
-//const cities = ['São Paulo', 'Rio de Janeiro', 'Minas Gerais']
-let upperCaseCities = [];
+const booleanString = BOOLEAN.toString();
+const primeiraLetraMaiuscula = booleanString.charAt(0).toUpperCase() + booleanString.slice(1);
 
-for (let i = 0; i < cities.length; i++) {
-    upperCaseCities.push(cities[i].toUpperCase());
-}
-
-//console.log(upperCaseCities);
+const type = "A string que a \"typeSentence\" armazena tem mais de " + NUMERO_DE_CARACTERES + " caracteres? " + primeiraLetraMaiuscula + ".";
+//console.log(typeSentence);
 
 
 /*
-  05 - Comente o console.log acima e:
+  06 - Comente o console.log() acima e:
 
-  - Após a const names, utilize um for loop para gerar um template HTML;
-  - Exiba no console o template HTML que você gerou;
-  - O template deve ser exibido apenas uma vez no console e o resultado deve ser:
-    <li>João Grilo</li><li>Chicó</li><li>Rosinha</li>
+  - Após a constante "falsyValues", exiba no console a frase abaixo,  
+    substituindo "NÚMERO_DE_ITENS" e "BOOLEAN" pelas informações corretas.
+
+  "Todos os NÚMERO_DE_ITENS itens do array "falsyValues" são falsy. Inclusive o  
+  BOOLEAN."
 */
 
-const names = ['João Grilo', 'Chicó', 'Rosinha']
-let htmlTemplate = "<ul>";
+const falsyValues = [0, "", false, '', ``, null, undefined, NaN]
 
-for (let i = 0; i < names.length; i++) {
-    htmlTemplate += `<li>${names[i]}</li>`;
-}
-
-htmlTemplate += "</ul>";
-
-//console.log(htmlTemplate);
+//console.log(`Todos os ${falsyValues.length} itens do array "falsyValues" são falsy. Inclusive o ${false}.`);
 
 
 /*
-  06 - Comente o console.log acima e:
+  07 - Comente o console.log() acima e:
 
-  - Após a const numbers, utilize um for loop para somar todos os números do  
-    array;
-  - Exiba no console um boolean indicando se o total dessa soma é 337;
-  - O console deve exibir true.
+  - Armazene em uma constante "crazyOperation" a soma entre null e 1;
+  - Armazene em uma constante "crazyConversion" a conversão da "crazyOperation"  
+    em boolean.
+  - Você sabe por que essa conversão resultou em true?
 */
 
-const numbers = ['91', '5', '30', '97', '83', '31']
+const crazyOperation = null + 1;
+const crazyConversion = Boolean(crazyOperation);
 
-let sum = 0;
-
-for (let i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-}
-
-//console.log(sum === 337);
+//console.log("Resultado da operação: ", crazyOperation);
+//console.log("Resultado da conversão: ", crazyConversion);
 
 
 /*
-  07 - Comente o console.log acima.
+  08 - Comente o console.log() acima e:
 
-  Este exercício é um pouco mais complexo que os anteriores. Não se preocupe  
-  muito caso você não acerte ele. Apenas tente resolvê-lo com o conhecimento  
-  adquirido até aqui.
+  - Armazene em uma constante "ages" um array com os números 31, 82, 61 e 11;
+  - Armazene em uma constante "agesSum" a soma entre 1º e 3º itens do array  
+    "ages";
+  - Exiba a frase abaixo no console, substituindo "BOOLEAN" pela informação  
+    correta.
 
-  - O JavaScript permite você criar arrays dentro de um outro array. Isso é  
-    chamado de aninhamento de arrays, ou nested arrays em inglês. Por isso, o  
-    array "arrays" abaixo é uma sintaxe válida. Cada array dentro do array  
-    "arrays" é um item;
-  - Abaixo do array "arrays", utilizando o for loop, some todos os números  
-    destes arrays.
-  - Após o for, exiba no console o resultado, que deve ser 218.
+  "A soma entre o 1º e o 3º item de "ages" é menor ou igual a 92. Essa afirmação  
+  é: BOOLEAN."
+*/
+const ages = [31, 82, 61, 11];
+const agesSum = ages[0] + ages[2];
+const isSumLessOrEqualTo92 = agesSum <= 92;
 
-  Dica: você pode colocar um loop dentro do outro, ou seja, aninhá-los. =)
+//console.log(`A soma entre o 1º e o 3º item de "ages" é menor ou igual a 92. Essa afirmação é: ${isSumLessOrEqualTo92}.`);
+
+
+
+/*
+  09 - Comente o console.log() acima e:
+
+  - Armazene em uma const "isNotAString" uma expressão que verifica se o tipo de  
+    dado que a "randomTVShow" armazena não é uma string;
+  - Essa expressão deve resultar em false.
+  - Exiba a "isNotAString" no console.
 */
 
-const arrays = [
-  [4, 32, 8],
-  [64, 8, 32],
-  [8, 32, 16],
-  [2, 8, 4]
-]
+
+const randomTVShow = "Breaking Bad";
+const isNotAString = typeof randomTVShow !== 'string';
+
+//console.log(isNotAString);
 
 
-let total = 0;
+/*
+  10 - Comente o console.log() acima e:
 
-for (let i = 0; i < arrays.length; i++) {
-    for (let j = 0; j < arrays[i].length; j++) {
-        total += arrays[i][j];
-    }
-}
+  - Abaixo da constante "evenNumbers", exiba no console um boolean que indica se  
+    o número 8 existe no array;
+  - Não utilize o método includes desta vez.
+*/
 
-console.log(total);
+const evenNumbers = [0, 2, 4, 6, 8, 10]
+
+const hasNumberEight = evenNumbers.indexOf(8) !== -1;
+
+//console.log(hasNumberEight);
+
