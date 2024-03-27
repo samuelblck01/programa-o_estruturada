@@ -6,30 +6,131 @@ let fornecedores = [];
 
 /* ************* FUNÇÕES ********* */
 
-
 function cadastrarUsuarios() {
-        for (let i = 0; ; i++) { // Remova a condição de parada do loop
-            if (i >= 6) { // Verifica se i atingiu o limite de 6 usuários
-                break; // Sai do loop
-            }
     
-            let usuario = {
-                nomeDoUsuario: prompt("Digite seu nome:"),
-                cpf: prompt("Digite seu CPF:"),
-                email: prompt("Digite seu Email:"),
-                senha: prompt("Crie sua senha:"),
-                cargo: prompt("Digite seu cargo:")
-            };
-            usuarios.push(usuario);
-            console.log("Usuário cadastrado com sucesso:", usuario);
-        }
-        
-        
+        let usuario = {
+            nomeDoUsuario: prompt("Digite seu nome:"),
+            cpf: prompt("Digite seu CPF:"),
+            email: prompt("Digite seu Email:"),
+            senha: prompt("Crie sua senha:"),
+            cargo: prompt("Digite seu cargo:")
+        };
+        usuarios.push(usuario);
         console.log("Usuário cadastrado com sucesso:", usuario);
-    }
-    
+}
 
-usuarios.push(cadastrarUsuarios.usuario);
+
+let fakeusuarios = [
+    {
+        nomeDoUsuario: "Usuário1",
+        cpf: "111.111.111-11",
+        email: "usuario1@example.com",
+        senha: "senha123",
+        cargo: "Cargo1"
+    },
+    {
+        nomeDoUsuario: "Usuário2",
+        cpf: "222.222.222-22",
+        email: "usuario2@example.com",
+        senha: "senha456",
+        cargo: "Cargo2"
+    },
+    {
+        nomeDoUsuario: "Usuário3",
+        cpf: "333.333.333-33",
+        email: "usuario3@example.com",
+        senha: "senha789",
+        cargo: "Cargo3"
+    },
+    {
+        nomeDoUsuario: "Usuário4",
+        cpf: "444.444.444-44",
+        email: "usuario4@example.com",
+        senha: "senhaabc",
+        cargo: "Cargo4"
+    },
+    {
+        nomeDoUsuario: "Usuário5",
+        cpf: "555.555.555-55",
+        email: "usuario5@example.com",
+        senha: "senhaxyz",
+        cargo: "Cargo5"
+    }
+];
+
+var produto1 = {
+    nome: "Laptop Ultra X",
+    peso: "1.5 kg",
+    setor: "Tecnologia",
+    marca: "TechMaster",
+    validade: "N/A",
+    quantidade: 500
+};
+
+var produto2 = {
+    nome: "Mochila Trekker Pro",
+    peso: "1.2 kg",
+    setor: "Acessórios de Viagem",
+    marca: "ExploreGear",
+    validade: "N/A",
+    quantidade: 300
+};
+
+var produto3 = {
+    nome: "Óleo de Coco Orgânico",
+    peso: "500g",
+    setor: "Alimentos e Bebidas",
+    marca: "Nature's Bounty",
+    validade: "2 anos",
+    quantidade: 1000
+};
+
+var produto4 = {
+    nome: "Camiseta DryFit Elite",
+    peso: "200g",
+    setor: "Vestuário Esportivo",
+    marca: "FitStyle",
+    validade: "N/A",
+    quantidade: 200
+};
+
+// Array contendo os objetos de produtos
+var produtosadcionados = [produto1, produto2, produto3, produto4];
+estoque.push(produtosadcionados)
+
+// Definição dos objetos de fornecedor
+var fornecedor1 = {
+    nomeDaEmpresa: "TechCorp",
+    cnpj: "12345678901234",
+    email: "contato@techcorp.com",
+    telefone: "(00) 1234-5678",
+    produtosEmpresa: [produto1, produto2]
+};
+
+var fornecedor2 = {
+    nomeDaEmpresa: "Nature's Distribuidora",
+    cnpj: "98765432109876",
+    email: "contato@naturesdistribuidora.com",
+    telefone: "(00) 9876-5432",
+    produtosEmpresa: [produto3]
+};
+
+var fornecedor3 = {
+    nomeDaEmpresa: "FitStyle Comércio",
+    cnpj: "56789012345678",
+    email: "contato@fitstyle.com",
+    telefone: "(00) 5678-9012",
+    produtosEmpresa: [produto4]
+}; 
+
+var fornecedoresfake = [fornecedor1, fornecedor2, fornecedor3]
+
+fornecedores.push(fornecedoresfake)
+
+usuarios.push(fakeusuarios)
+console.log(fornecedores)
+console.log(estoque)
+
 
 function validarEmail(email) {
     var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -41,46 +142,52 @@ function validarSenha(senha) {
 }
 
 function listarUsuarios() {
-    console.log("Lista de usuários:");
-    usuarios.forEach(usuario => {
-        console.log(usuario);
-    });
+    alert(usuarios)
 }
 
+
+
 function removerUsuario() {
-    let IDusuario = prompt("Qual o ID do usuário que será removido : ");
-    usuarios.splice(IDusuario, 1);
-    console.log(`O usuário de ID: ${IDusuario} foi removido com sucesso.`);
+    let IDusuario = parseInt(prompt("Qual o ID do usuário que será removido : "));
+    if (IDusuario >= 0 && IDusuario < usuarios.length) {
+        usuarios.splice(IDusuario, 1);
+        alert(`O usuário de ID: ${IDusuario} foi removido com sucesso.`);
+    } else {
+        alert("ID de usuário inválido.");
+    }
 }
 
 function alterarDadoUsuario() {
-    let IDusuario = prompt("Qual é o ID do usuário que desejas alterar :");
-    let usuarioModificado = {
-        nomeDoUsuario: prompt("Qual o novo nome:"),
-        cpf: prompt("Qual o novo cpf:"),
-        email: prompt("Qual o novo email:"),
-        senha: prompt("Qual o novo senha:"),
-        cargo: prompt("Qual o novo cargo:")
-    };
-
-    usuarios[IDusuario] = usuarioModificado;
-    console.log("Usuário alterado com sucesso:", usuarioModificado);
+    let IDusuario = parseInt(prompt("Qual é o ID do usuário que desejas alterar :"));
+    if (IDusuario >= 0 && IDusuario < usuarios.length) {
+        let usuarioModificado = {
+            nomeDoUsuario: prompt("Qual o novo nome:"),
+            cpf: prompt("Qual o novo cpf:"),
+            email: prompt("Qual o novo email:"),
+            senha: prompt("Qual o novo senha:"),
+            cargo: prompt("Qual o novo cargo:")
+        };
+        usuarios[IDusuario] = usuarioModificado;
+        alert("Usuário alterado com sucesso:", usuarioModificado);
+    } else {
+        console.log("ID de usuário inválido.");
+    }
 }
 
 function logarUsuario() {
-    let loginusuario = prompt("Qual seu email :")
-    let loginsenha = prompt("Qual sua senha: ")
+    let loginusuario = prompt("Qual seu email :");
+    let loginsenha = prompt("Qual sua senha: ");
 
-    for (let i = 0; i < usuarios.length; i++) {
-        if (usuarios[i].email === loginusuario && usuarios[i].senha === loginsenha) {
-            console.log("login válido. Acesso permitido.");
-            return;
-        }
+    let usuarioEncontrado = usuarios.find(usuario => usuario.email === loginusuario && usuario.senha === loginsenha);
+    if (usuarioEncontrado) {
+        alert("Login válido. Acesso permitido.");
+    } else {
+        alert("Login inválido. Acesso negado.");
     }
-    console.log("Login inválido. Acesso negado.");
 }
 
 function adicionarProduto() {
+
     let produto = {
         nome: prompt("Qual o nome do produto :"),
         peso: prompt("Qual o peso do produto :"),
@@ -90,50 +197,48 @@ function adicionarProduto() {
         quantidade: prompt("Qual a quantidade desse produto : ")
     };
     estoque.push(produto);
-    console.log("Produto adicionado com sucesso:", produto);
+    alert("Produto adicionado com sucesso:", produto);
 }
 
 function validadeIndividual() {
     let nome = prompt("Digite o nome do produto para consultar sua validade:");
-    for (let i = 0; i < estoque.length; i++) {
-        if (estoque[i].nome === nome) {
-            return `A validade do produto ${nome} é ${estoque[i].validade}`;
-        }
+    let produtoEncontrado = estoque.find(produto => produto.nome === nome);
+    if (produtoEncontrado) {
+       alert`A validade do produto ${nome} é: ${produtoEncontrado.validade}`;
+    } else {
+        alert `Produto ${nome} não encontrado no estoque`;
     }
-    return `Produto ${nome} não encontrado no estoque`;
 }
 
 function imprimirRelatorioValidades() {
-    console.log("Validades dos produtos em estoque:");
+    alert("Validades dos produtos em estoque:");
     estoque.forEach(produto => {
-        console.log(`${produto.nome} (${produto.marca}, ${produto.setor}): ${produto.validade}`);
+        alert(`${produto.nome} (${produto.marca}, ${produto.setor}): ${produto.validade}`);
     });
 }
 
 function removerProduto() {
     let nome = prompt("Digite o nome do produto que deseja remover:");
-    for (let i = 0; i < estoque.length; i++) {
-        if (estoque[i].nome === nome) {
-            estoque.splice(i, 1);
-            console.log(`O Produto ${nome} foi removido com sucesso.`);
-            return;
-        }
+    let index = estoque.findIndex(produto => produto.nome === nome);
+    if (index !== -1) {
+        estoque.splice(index, 1);
+        alert(`O Produto ${nome} foi removido com sucesso.`);
+    } else {
+       alert(`Produto ${nome} não encontrado.`);
     }
-    console.log(`Produto ${nome} não encontrado.`);
 }
 
 function atualizarQuantidade() {
     let nome = prompt("Digite o nome do produto para atualizar sua quantidade:");
     let novaQuantidade = parseInt(prompt("Digite a nova quantidade do produto:"));
 
-    for (let i = 0; i < estoque.length; i++) {
-        if (estoque[i].nome === nome) {
-            estoque[i].quantidade = novaQuantidade;
-            console.log(`Quantidade do produto ${nome} modificada para ${novaQuantidade}`);
-            return;
-        }
+    let produtoEncontrado = estoque.find(produto => produto.nome === nome);
+    if (produtoEncontrado) {
+        produtoEncontrado.quantidade = novaQuantidade;
+        alert(`Quantidade do produto ${nome} modificada para ${novaQuantidade}`);
+    } else {
+        alert(`Produto ${nome} não encontrado.`);
     }
-    console.log(`Produto ${nome} não encontrado.`);
 }
 
 function cadastrarFornecedor() {
@@ -145,41 +250,38 @@ function cadastrarFornecedor() {
         produtosEmpresa: prompt("Qual o nome dos produtos da empresa"),
     };
     fornecedores.push(fornecedor);
-    console.log("Fornecedor cadastrado com sucesso:", fornecedor);
+    alert("Fornecedor cadastrado com sucesso:", fornecedor);
 }
 
 function listarFornecedores() {
-    console.log("Lista de fornecedores:");
-    fornecedores.forEach(fornecedor => {
-        console.log(fornecedor);
-    });
+    alert(fornecedores)
 }
 
 function removerFornecedor() {
     let IDfornecedor = parseInt(prompt("Qual o ID do Fornecedor: "));
-    fornecedores.splice(IDfornecedor, 1);
-    console.log("Fornecedor removido com sucesso ");
+    if (IDfornecedor >= 0 && IDfornecedor < fornecedores.length) {
+        fornecedores.splice(IDfornecedor, 1);
+        console.log("Fornecedor removido com sucesso ");
+    } else {
+        console.log("ID de fornecedor inválido.");
+    }
 }
 
-
-
 /*  --------- SEQUÊNCIA DE VALIDAÇÃO E TESTE DO CÓDIGO --------- */
-
 
 console.log('******+++*******');
 console.log('Sistema de controle de estoque');
 console.log('******+++*******');
 
 /* 01 - Processo de cadastro de 6 usuários */
-
-    cadastrarUsuarios();
-
+cadastrarUsuarios();
 
 /* 02 - Listar todos usuários cadastrados, com todas informações */
 listarUsuarios();
 
 /* 03 - Remover 1 dos usuários, qualquer um deles e depois listar novamente eles
         para ver se o usuário foi removido. */
+      
 removerUsuario();
 listarUsuarios();
 
@@ -192,24 +294,19 @@ logarUsuario();
 /* 06 - Cadastrar pelo menos 15 produtos */
 adicionarProduto();
 
+
 /* 07 - Consultar validade individualmente de um produto */
-validadeIndividual();
+console.log(validadeIndividual());
 
-/* 08 - Consultar validade de todos os produtos em formato relatório */
-imprimirRelatorioValidades();
+/* 08 - Consultar validade de todos os produtos em formato relatório*/
 
-/* 09 - Remover pelo menos 5 produtos */
-removerProduto();
 
-/* 10 - Atualizar a quantidade de pelo menos 5 produtos */
-atualizarQuantidade();
+/*var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;: Declara uma expressão regular que define o padrão que um endereço de e-mail válido deve seguir. Vamos quebrar essa expressão regular em partes:
 
-/* 11 - Cadastrar fornecedor, no minimo 3 */
-cadastrarFornecedor();
-
-/* 12 - Listar fornecedores */
-listarFornecedores();
-
-/* 13 - Remover 1 fornecedor e depois imprimir a lista completa */
-removerFornecedor();
-listarFornecedores();
+^: Indica que a correspondência deve começar no início da string.
+[^\s@]+: Corresponde a um ou mais caracteres que não são espaços em branco ou o símbolo "@".
+@: Corresponde literalmente ao símbolo "@".
+[^\s@]+: Corresponde a um ou mais caracteres que não são espaços em branco ou o símbolo "@".
+\.: Corresponde literalmente a um ponto ".". Como o ponto é um caractere especial em expressões regulares, ele é precedido por uma barra invertida para indicar que queremos corresponder literalmente a um ponto.
+[^\s@]+: Corresponde a um ou mais caracteres que não são espaços em branco ou o símbolo "@".
+$: Indica que a correspondência deve terminar no final da string.*/
