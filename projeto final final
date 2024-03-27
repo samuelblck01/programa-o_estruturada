@@ -1,67 +1,51 @@
 /* ************* VARIÁVEIS GLOBAIS ********* */
 
-// Variável de controle do estoque a partir de vendas e compras
-let estoque = []; // Este array deve possuir objetos
-let usuarios = []; // Este array deve possuir objetos
-let Fornecedores = [];
-
-
+let estoque = [];
+let usuarios = [];
+let fornecedores = [];
 
 /* ************* FUNÇÕES ********* */
 
 
-
-/* ************* FUNÇÕES ********* */
-
-function cadastrarUsuarios(usuario) {
-    console.log("Usuário cadastrado com sucesso:");
-    console.log(objeto);
-   for(let i =0; i < 7; i++){ /* Aqui vocês implementam o código referente a função */
-        let usuario = {
-            nomeDoUsuario: prompt("Digite seu nome:"),
-            cpf: prompt("Digite seu CPF:"),
-            email: prompt("Digite seu Email:"),
-            senha: prompt("Crie sua senha:"),
-            cargo: prompt("Digite seu cargo:")
-        };
-}
-}
+function cadastrarUsuarios() {
+        for (let i = 0; ; i++) { // Remova a condição de parada do loop
+            if (i >= 6) { // Verifica se i atingiu o limite de 6 usuários
+                break; // Sai do loop
+            }
+    
+            let usuario = {
+                nomeDoUsuario: prompt("Digite seu nome:"),
+                cpf: prompt("Digite seu CPF:"),
+                email: prompt("Digite seu Email:"),
+                senha: prompt("Crie sua senha:"),
+                cargo: prompt("Digite seu cargo:")
+            };
+            usuarios.push(usuario);
+            console.log("Usuário cadastrado com sucesso:", usuario);
+        }
+        
+        
+        console.log("Usuário cadastrado com sucesso:", usuario);
+    }
+    
 
 usuarios.push(cadastrarUsuarios.usuario);
 
-
-
-
 function validarEmail(email) {
-    // Expressão para validar e-mail
     var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 }
 
 function validarSenha(senha) {
-    // Verifica se a senha tem pelo menos 8 caracteres
     return senha.length >= 8;
 }
 
-function listarUsuarios(validacao) {
-    // Verifica se o e-mail é válido
-    if (validarEmail(validacao.email)) {
-        console.log("O email é válido");
-    } else {
-        console.log("O email é inválido");
-    }
-    
-    console.log(usuarios);
-
-    // Verifica se a senha é válida
-    if (validarSenha(validacao.senha)) {
-        console.log("A senha é válida");
-    } else {
-        console.log("A senha deve ter pelo menos 8 caracteres");
-    }
+function listarUsuarios() {
+    console.log("Lista de usuários:");
+    usuarios.forEach(usuario => {
+        console.log(usuario);
+    });
 }
-
-listarUsuarios(usuario);
 
 function removerUsuario() {
     let IDusuario = prompt("Qual o ID do usuário que será removido : ");
@@ -72,167 +56,111 @@ function removerUsuario() {
 function alterarDadoUsuario() {
     let IDusuario = prompt("Qual é o ID do usuário que desejas alterar :");
     let usuarioModificado = {
-        nome: prompt("Qual o novo nome:"),
+        nomeDoUsuario: prompt("Qual o novo nome:"),
         cpf: prompt("Qual o novo cpf:"),
         email: prompt("Qual o novo email:"),
         senha: prompt("Qual o novo senha:"),
         cargo: prompt("Qual o novo cargo:")
     };
 
-    // Substituir o usuário no array pelo usuário modificado
     usuarios[IDusuario] = usuarioModificado;
+    console.log("Usuário alterado com sucesso:", usuarioModificado);
 }
-
-alterarDadoUsuario();
-console.log("Usuário alterado com sucesso:", usuarios);
-
 
 function logarUsuario() {
-    /* 
-       Aqui vocês implementam o código referente a função
-       Usar IFs para verificar se o e-mail e senha estão corretos.
-    */
-   let loginusuario = prompt("Qual seu email :")
-   let loginsenha = prompt("Qual sua senha: ")
+    let loginusuario = prompt("Qual seu email :")
+    let loginsenha = prompt("Qual sua senha: ")
 
-   for (let i = 0; i< usuarios.length; i++){
-    if (usuarios[i].email === logarUsuario && usuarios[i].senha === loginsenha){
-        console.log("login válido. Acesso permitido.")
-    }else {
-        console.log("Login inválido. Acesso negado.")
+    for (let i = 0; i < usuarios.length; i++) {
+        if (usuarios[i].email === loginusuario && usuarios[i].senha === loginsenha) {
+            console.log("login válido. Acesso permitido.");
+            return;
+        }
     }
-   }
-   
+    console.log("Login inválido. Acesso negado.");
 }
-logarUsuario()
 
 function adicionarProduto() {
-    /* 
-       Aqui vocês implementam o código referente a função 
-    */
-   console.log(produtos)
-   console.log("Produto adicionado com sucesso.")
+    let produto = {
+        nome: prompt("Qual o nome do produto :"),
+        peso: prompt("Qual o peso do produto :"),
+        setor: prompt("Qual o setor do produto :"),
+        marca: prompt("Qual a marca do produto :"),
+        validade: prompt("Qual a validade do produto :"),
+        quantidade: prompt("Qual a quantidade desse produto : ")
+    };
+    estoque.push(produto);
+    console.log("Produto adicionado com sucesso:", produto);
 }
-let produtos = {
-    nome: prompt("Qual o nome do produto :"),
-    peso: prompt("Qual o peso do produto :"),
-    setor: prompt("Qual o setor do produto :"),
-    marca: prompt("Qual a marca do produto :"),
-    validade: prompt("Qual a validade do produto :"),
-    quantide:prompt("Qual a quantidade desse produto : ")
-    
-}
-estoque.push(produtos)
 
 function validadeIndividual() {
-    
-    function validadeIndividual() {
-        let nome = prompt("Digite o nome do produto para consultar sua validade:");
-        
-        // Percorrer o array estoque para encontrar o produto
-        for (let i = 0; i < estoque.length; i++) {
-            if (estoque[i].nome === nome) {
-                // Se encontrarmos o produto, retornamos sua validade
-                return `A validade do produto ${nome} é ${estoque[i].validade}`;
-            }
+    let nome = prompt("Digite o nome do produto para consultar sua validade:");
+    for (let i = 0; i < estoque.length; i++) {
+        if (estoque[i].nome === nome) {
+            return `A validade do produto ${nome} é ${estoque[i].validade}`;
         }
-        
-        // Se o produto não for encontrado, retornamos uma mensagem indicando isso
-        return `Produto ${nome} não encontrado no estoque`;
     }
-    
-    
-    
-
-
+    return `Produto ${nome} não encontrado no estoque`;
 }
 
 function imprimirRelatorioValidades() {
-    /* 
-       Aqui vocês implementam o código referente a função 
-    */
-   console.log("Validades dos produtos em estoque:");
-   
-   // Percorrer o array estoque e imprimir as validades de cada produto
-   estoque.forEach(produto => {
-       console.log(`${produtos.nome} (${produtos.marca}, ${produtos.setor}): ${produtos.validade}`);
-   });
-   // Chamada da função para imprimir as validades do estoque no console
-   imprimirValidadesDoEstoque();
-   
+    console.log("Validades dos produtos em estoque:");
+    estoque.forEach(produto => {
+        console.log(`${produto.nome} (${produto.marca}, ${produto.setor}): ${produto.validade}`);
+    });
 }
-imprimirValidadesDoEstoque();
 
 function removerProduto() {
     let nome = prompt("Digite o nome do produto que deseja remover:");
-
-    /* 
-       Aqui vocês implementam o código referente a função 
-    */
-       let IDproduto = prompt("Qual o ID do Produto que será removido : ");
-       usuarios.splice(IDproduto, 1);
-       console.log(`O Produto de ID: ${IDproduto} foi removido com sucesso.`);
-   
+    for (let i = 0; i < estoque.length; i++) {
+        if (estoque[i].nome === nome) {
+            estoque.splice(i, 1);
+            console.log(`O Produto ${nome} foi removido com sucesso.`);
+            return;
+        }
+    }
+    console.log(`Produto ${nome} não encontrado.`);
 }
 
-function atualizarQuantidade(nome, quantidadenova, produtoEncontrado) {
+function atualizarQuantidade() {
     let nome = prompt("Digite o nome do produto para atualizar sua quantidade:");
-    let quantidadenova = parseInt(prompt("Digite a nova quantidade do produto:"));
-    /* 
-       Aqui vocês implementam o código referente a função 
-    */
-       let produtoEncontrado = false;
-       for (let i = 0; i < estoque.length; i++) {
-           if (estoque[i].nome === nomeProduto) {
-               // Modificar a quantidade do produto
-               estoque[i].quantidade = novaQuantidade;
-               produtoEncontrado = true;
-               console.log(`Quantidade do produto ${nome} modificada para ${quantidadenova}`);
-               break;
-   
-            }
-       }    
+    let novaQuantidade = parseInt(prompt("Digite a nova quantidade do produto:"));
+
+    for (let i = 0; i < estoque.length; i++) {
+        if (estoque[i].nome === nome) {
+            estoque[i].quantidade = novaQuantidade;
+            console.log(`Quantidade do produto ${nome} modificada para ${novaQuantidade}`);
+            return;
+        }
+    }
+    console.log(`Produto ${nome} não encontrado.`);
 }
 
 function cadastrarFornecedor() {
-    console.log(Fornecedor)
-    console.log("Fornecedor cadastrado com sucesso. ")
-    /* 
-       Aqui vocês implementam o código referente a função 
-    */
+    let fornecedor = {
+        nomeDaEmpresa: prompt("Qual o nome da empresa"),
+        cnpj: prompt("Qual o CNPJ da empresa"),
+        email: prompt("Qual o Email da empresa"),
+        telefone: prompt("Qual o telefone da empresa"),
+        produtosEmpresa: prompt("Qual o nome dos produtos da empresa"),
+    };
+    fornecedores.push(fornecedor);
+    console.log("Fornecedor cadastrado com sucesso:", fornecedor);
 }
-
-let Fornecedor = {
-    nomeDaEmpresa:prompt("Qual o nome da empresa"),
-    cnpj:prompt("Qual o CNPJ da empresa"),
-    email:prompt("Qual o Email da empresa"),
-    telefone:prompt("Qual o telefone da empresa"),
-    produtosEmpresa:prompt("Qual o nome da empresa"),
-    nomeDaEmpresa:prompt("Qual o nome da empresa"),
-}
-Fornecedores.push(Fornecedor)
 
 function listarFornecedores() {
-    /* 
-       Aqui vocês implementam o código referente a função
-       Usar IFs para verificar se o e-mail e senha estão corretos.
-    */
-   for(let i = o; i < Fornecedores.length;){       
-    Fornecedores.forEach(produto => {
-        console.log(`${Fornecedor.produtosEmpresa} (${Fornecedor.cnpj}, ${Fornecedor.email}, ${Fornecedor.telefone}): ${Fornecedor.nomeDaEmpresa}`);
+    console.log("Lista de fornecedores:");
+    fornecedores.forEach(fornecedor => {
+        console.log(fornecedor);
     });
-   }
 }
 
 function removerFornecedor() {
-    /* 
-       Aqui vocês implementam o código referente a função
-       Usar IFs para verificar se o e-mail e senha estão corretos.
-    */
-   let IDfornecedor = prompt("Qual o ID do Fornecedor: ")
-   Fornecedores.splice[IDfornecedor]
-   console.log("Fornecedor removido com sucesso ")
+    let IDfornecedor = parseInt(prompt("Qual o ID do Fornecedor: "));
+    fornecedores.splice(IDfornecedor, 1);
+    console.log("Fornecedor removido com sucesso ");
 }
+
 
 
 /*  --------- SEQUÊNCIA DE VALIDAÇÃO E TESTE DO CÓDIGO --------- */
@@ -243,9 +171,9 @@ console.log('Sistema de controle de estoque');
 console.log('******+++*******');
 
 /* 01 - Processo de cadastro de 6 usuários */
-for (let i = 0; i < 6; i++) {
+
     cadastrarUsuarios();
-}
+
 
 /* 02 - Listar todos usuários cadastrados, com todas informações */
 listarUsuarios();
